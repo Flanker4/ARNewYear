@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var sceneView: VirtualObjectARView!
     
+    @IBOutlet weak var makePhotoButton: UIButton!
     @IBOutlet weak var addObjectButton: UIButton!
     
     @IBOutlet weak var blurView: UIVisualEffectView!
@@ -55,7 +56,6 @@ class ViewController: UIViewController {
     }
     
     // MARK: - View Controller Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -21,8 +21,17 @@ extension ViewController: UIGestureRecognizerDelegate {
         // Ensure adding objects is an available action and we are not loading another object (to avoid concurrent modifications of the scene).
         guard !addObjectButton.isHidden && !virtualObjectLoader.isLoading else { return }
         
-        statusViewController.cancelScheduledMessage(for: .contentPlacement)
-        performSegue(withIdentifier: SegueIdentifier.showObjects.rawValue, sender: addObjectButton)
+        if let reinventlyTee = VirtualObject.availableObjects.first(where: { $0.modelName.contains("tree") }) {
+             self.virtualObjectSelectionViewController(nil, didSelectObject:reinventlyTee)
+        }
+    }
+    
+    @IBAction func makePhotoPressed(_ sender: Any) {
+        let image = self.sceneView.snapshot()
+        
+        let activityViewController = UIActivityViewController(activityItems: ["Happy New Year!", image], applicationActivities: nil)
+       
+        self.present(activityViewController, animated: true)
     }
     
     /// Determines if the tap gesture for presenting the `VirtualObjectSelectionViewController` should be used.
